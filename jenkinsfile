@@ -1,7 +1,7 @@
 pipeline{
     agent{label 'java'}
     stages{
-        stage{
+        stage('source code management'){
             steps{
                 git 'https://github.com/Akshay0570/python-sample-vscode-flask-tutorial.git'
             }
@@ -35,6 +35,6 @@ pipeline{
 tox -e py'''
             }
         }
-        
+
     }
 }
