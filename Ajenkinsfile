@@ -1,0 +1,10 @@
+pipeline{
+    agent{ label 'java' }
+    stages{
+        stage('ansible-playbook'){
+            steps{
+                ansiblePlaybook become: true, forks: 3, installation: 'Ansible', inventory: 'hosts', playbook: 'pip.yaml', sudo: true
+            }
+        }
+    }
+}
