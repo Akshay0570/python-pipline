@@ -8,7 +8,7 @@ pipeline{
         }
         stage('ansible-playbook'){
             steps{
-ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'python.yaml', sudo: true
+ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'python.yaml'
             }
         }
     }
