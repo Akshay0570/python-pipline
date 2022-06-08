@@ -25,7 +25,7 @@ pipeline{
 
         stage('shell script'){
             steps{
-                sh 'FLASK_APP=app.py flask run --host=0.0.0.0'
+                sh 'FLASK_APP=app.py -d flask run --host=0.0.0.0 > log.txt 2>&1 &'
             }
         }
         
