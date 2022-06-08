@@ -9,7 +9,8 @@ pipeline{
         stage('ansible-playbook'){
             steps{
                 ansiblePlaybook become: true,
-                disableHostKeyChecking: true, 
+                credentialsId: 'd05c9c88-81fc-44a3-bae4-d5bf7f74fa7b',  
+                disableHostKeyChecking: true,
                 installation: 'Ansible', 
                 inventory: '/var/lib/jenkins/workspace/py-ansible-pipline/hosts', 
                 playbook: '/var/lib/jenkins/workspace/py-ansible-pipline/python.yaml'
