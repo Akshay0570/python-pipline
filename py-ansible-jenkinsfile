@@ -13,7 +13,6 @@ disableHostKeyChecking: true,
 installation: 'Ansible', 
 inventory: 'hosts', 
 playbook: 'python.yaml', 
-sudo: true
             }
         }
     }
