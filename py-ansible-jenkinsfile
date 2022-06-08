@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('source-code-management'){
             steps{
-                git 'https://github.com/Akshay0570/python-pipline.git'
+               git branch: 'main', url: 'https://github.com/Akshay0570/python-pipline.git'
             }
         }
         stage('ansible-playbook'){
