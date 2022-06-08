@@ -1,0 +1,50 @@
+---
+  - name: python sample project
+    become: yes
+    hosts: all
+    tasks:
+      - name: installing dependencies
+        apt:
+          name:
+            - python3
+            - python3-setuptools
+            - python3-dev 
+            - build-essential
+            - python3-pip
+            - python3-mysqldb
+            - mysql-server
+            - mysql-client
+      - name: start mysql
+        systemd:
+          name: mysql
+          enabled: true
+          state: started
+      - name: Create database user with name 'db_user' and password 'Passw0rd' with all database privileges
+        community.mysql.mysql_user:
+          login_unix_socket: /var/run/mysqld/mysqld.sock
+          login_user: root
+          login_password: password
+          name: db_user
+          password: Passw0rd
+          priv: "*.*:ALL"
+          state: present
+      - name: Create a new database with name 'employee_db'
+        community.mysql.mysql_db:
+          login_unix_socket: /var/run/mysqld/mysqld.sock
+          login_user: root
+          login_password: password
+          name: employee_db
+          state: present
+      - name: Run several insert queries against db test_db in single transaction
+        community.mysql.mysql_query:
+          login_db: employee_db
+          login_user: root
+          login_password: password
+          query:
+          - CREATE TABLE employees (name VARCHAR(20))
+          - INSERT INTO employees VALUES ('JOHN')
+      - name: Install pip python package
+        pip:
+          name:
+            - flask
+            - flask-mysql
