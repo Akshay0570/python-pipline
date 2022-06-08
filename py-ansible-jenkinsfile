@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage('source-code-management'){
             steps{
-                git 'https://github.com/Akshay0570/python-pipelin.git'
+                git 'https://github.com/Akshay0570/python-pipline.git'
             }
         }
         stage('ansible-playbook'){
             steps{
-ansiblePlaybook become: true, disableHostKeyChecking: true, inventory: 'hosts', playbook: 'python.yaml'
+                ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'python.yaml'
             }
         }
     }
