@@ -1,9 +1,14 @@
 pipeline{
-    agent{ label 'java' }
+    agent{ label 'jenkins' }
     stages{
         stage('ansible-playbook'){
             steps{
-                ansiblePlaybook become: true, forks: 3, installation: 'Ansible', inventory: 'hosts', playbook: 'pip.yaml', sudo: true
+                ansiblePlaybook become: true,  
+                credentialsId: 'd05c9c88-81fc-44a3-bae4-d5bf7f74fa7b',
+                disableHostKeyChecking: true,
+                installation: 'Ansible', 
+                inventory: 'hosts', 
+                playbook: 'pip.yaml', 
             }
         }
     }
