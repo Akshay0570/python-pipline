@@ -1,49 +1,19 @@
 pipeline{
-    agent{ label 'java' }
     stages{
-
         stage('source code management'){
             steps{
                 git 'https://github.com/Akshay0570/python-sample-vscode-flask-tutorial.git'
             }
         }
-
-        stage('installing dependencies'){
+        stage('install dependencies'){
             steps{
                 sh '''sudo apt update
-sudo apt install python -y
-python -m pip install --upgrade pip setuptools wheel'''
+python3-pip
+python3-setuptools
+python3-dev
+build-essential
+python3-pip'''
             }
         }
-
-        stage('installing dependencies2'){
-            steps{
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('installing flake8'){
-            steps{
-                sh ''' python -m pip install flake8
-    flake8 .'''
-            }
-        }
-
-        stage('install pytest and pytest-cov'){
-            steps{
-                sh ''' pip install pytest pytest-azurepipelines
-    pip install pytest-cov
-    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'''
-            }
-        }
-
-        stage('installing and run test with tox'){
-            steps{
-                sh ''' pip install tox
-tox -e py'''
-            }
-        }
-
-
     }
 }
