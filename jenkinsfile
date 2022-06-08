@@ -1,0 +1,15 @@
+pipeline{
+    agent{label 'java'}
+    stages{
+        stage ('source-code'){
+            steps{
+                git 'https://github.com/mmumshad/simple-webapp.git'
+            }
+        }
+        stage('shell script'){
+            steps{
+                sh 'FLASK_APP=app.py flask run --host=0.0.0.0'
+            }
+        }
+    }
+}
