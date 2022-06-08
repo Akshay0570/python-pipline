@@ -11,8 +11,8 @@ pipeline{
                 ansiblePlaybook become: true,
                 disableHostKeyChecking: true, 
                 installation: 'Ansible', 
-                inventory: '/home/jenkins/workspace/py-ansible-pipline/hosts', 
-                playbook: '/home/jenkins/workspace/py-ansible-pipline/python.yaml'
+                inventory: '/var/lib/jenkins/workspace/py-ansible-pipline/hosts', 
+                playbook: '/var/lib/jenkins/workspace/py-ansible-pipline/python.yaml'
             }
         }
     }
