@@ -1,4 +1,5 @@
 pipeline{
+    agent{label 'java'}
     stages{
         stage('source code management'){
             steps{
