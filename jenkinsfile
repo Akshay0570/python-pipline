@@ -6,10 +6,29 @@ pipeline{
                 git 'https://github.com/mmumshad/simple-webapp.git'
             }
         }
+         stage ('Upload file') {
+            steps {
+                rtUpload (
+                    // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
+                    serverId: Jfrog,
+                    spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "app.py",
+                                        "target": "local-python"
+                                    }
+                                ]
+                            }"""
+                )
+            }
+        }
+
         stage('shell script'){
             steps{
                 sh 'FLASK_APP=app.py flask run --host=0.0.0.0'
             }
         }
+        
+
     }
 }
