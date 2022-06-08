@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('source-code-management'){
             steps{
-                git 'https://github.com/mmumshad/simple-webapp.git'
+                git 'https://github.com/Akshay0570/python-pipelinee.git'
             }
         }
         stage('ansible-playbook'){
