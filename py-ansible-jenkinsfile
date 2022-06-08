@@ -1,7 +1,7 @@
 pipeline{
     agent{label 'jenkins'}
     stages{
-        stage('source-code-management'){
+         stage('source-code-management'){
             steps{
                 git 'https://github.com/mmumshad/simple-webapp.git'
             }
@@ -17,3 +17,4 @@ pipeline{
         }
     }
 }
+    
